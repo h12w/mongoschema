@@ -325,6 +325,9 @@ func (s StructType) Merge(t Type, gen *Generator) Type {
 func NewType(v interface{}, gen *Generator) Type {
 	switch i := v.(type) {
 	default:
+		if fmt.Sprint(v) == "{}" {
+			return NilType
+		}
 		panic(fmt.Sprintf("cannot determine type for %v with go type %T", v, v))
 	case nil:
 		return NilType
