@@ -287,10 +287,10 @@ func (s StructType) GoType(gen *Generator) string {
 			vGoType := v.GoType(gen)
 			fmt.Fprintf(
 				&buf,
-				"%s %s `bson:\"%s,omitempty\"`\n",
+				"%s %s `bson:\"%s,omitempty\" json:\"%s,omitempty\"`\n",
 				makeFieldName(k),
 				vGoType,
-				k,
+				k, k,
 			)
 		} else {
 			if gen.Comments {
